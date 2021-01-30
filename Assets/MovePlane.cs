@@ -13,6 +13,14 @@ public class MovePlane : MonoBehaviour
     private Vector3 targetNew;
     private Vector3 targetOld;
 
+    public Vector3 AngleA;
+    public Vector3 AngleB;
+    private Vector3 targetAngle;
+    public Vector3 targetB;
+    private Vector3 currentAngle;
+
+    float speedR = 0.1f;
+
     public float speed;
 
     public float startTime;
@@ -33,6 +41,8 @@ public class MovePlane : MonoBehaviour
         targetNew = PosB;
         targetOld = PosA;
 
+        currentAngle = transform.eulerAngles;
+
     }
 
     // Update is called once per frame
@@ -48,11 +58,21 @@ public class MovePlane : MonoBehaviour
         //Debug.DrawLine(Vector3.zero, Vector3.forward, Color.blue);
         //Debug.DrawLine(Vector3.zero, interpolatedPosition, Color.yellow);
 
+
+
         float distCovered = (Time.time - startTime) * speed;
 
         fractionOfJourney = distCovered / journeyLength;
 
         transform.position = Vector3.Lerp(targetOld, targetNew, fractionOfJourney);
+
+
+        currentAngle = new Vector3(
+                Mathf.LerpAngle(currentAngle.x, targetAngle.x, fractionOfJourney),
+                Mathf.LerpAngle(currentAngle.y, targetAngle.y, fractionOfJourney),
+                Mathf.LerpAngle(currentAngle.z, targetAngle.z, fractionOfJourney));
+
+        transform.eulerAngles = currentAngle;
 
         if (transform.position == PosB)
         {
@@ -66,8 +86,6 @@ public class MovePlane : MonoBehaviour
             targetOld = PosA;
             targetNew = PosB;
         }
-
-
 
 
         //if (transform.position == endMarker.position)
