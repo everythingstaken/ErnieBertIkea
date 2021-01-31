@@ -18,7 +18,7 @@ public class GoTo : MonoBehaviour
 
     private void Awake()
     {
-        transform.position = new Vector3(0, 0, 0);
+        //transform.position = new Vector3(0, 0, 0);
         targetPos = transform.position;
         targetRot = transform.rotation;
         percentage = 1f;

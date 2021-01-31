@@ -90,6 +90,7 @@ public class GameManagerScript : MonoBehaviour
                 cs.GetComponent<AudioSource>().Play();
                 if(cs.GetComponent<UnityEngine.Video.VideoPlayer>() != null)
                 {
+                    //videoPlayer.url = System.IO.Path.Combine (Application.streamingAssetsPath, "myfile.mp4")
                     cs.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
                 }
 
