@@ -13,6 +13,13 @@ public class GameManagerScript : MonoBehaviour
 
     public Vector3 newPos;
     private ClickScript click_script;
+    private GoTo goToScript;
+    //private GoTo goToScript;
+
+    [SerializeField] private Controls _controls;
+
+    //ClickScript clickScript = GameObject.Find("name of your object").GetComponent<ClickScript>();
+
 
     private void Awake()
     {
@@ -20,7 +27,7 @@ public class GameManagerScript : MonoBehaviour
         ChangeCursor(cursor);
         Cursor.lockState = CursorLockMode.Confined;
         mainCamera = Camera.main;
-        
+        goToScript = mainCamera.GetComponent<GoTo>();
     }
 
     private void OnEnable()
@@ -42,8 +49,11 @@ public class GameManagerScript : MonoBehaviour
 
     private void StartedClick()
     {
-        ChangeCursor(cursorClicked);
-        DetectObject();
+        if (goToScript.percentage >= 1f)
+        {
+            ChangeCursor(cursorClicked);
+            DetectObject();
+        }
 
     }
 
@@ -79,8 +89,10 @@ public class GameManagerScript : MonoBehaviour
         {
             if (hitsNonAlloc[i].collider != null)
             {
-                newPos = hitsNonAlloc[i].transform.position;
+                ClickScript cs = hitsNonAlloc[i].collider.gameObject.GetComponent<ClickScript>();
+                //mainCamera.transform.position = cs.newCamPos;
                 Debug.Log("3D Hit Non Alloc All:" + hitsNonAlloc[i].transform.position);
+                goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot));
             }
         }
 

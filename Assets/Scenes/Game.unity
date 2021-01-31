@@ -554,8 +554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1c0001d3166c44b207bf0cb2909c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newCamPos: {x: 0, y: 0, z: 0}
-  newCamRot: {x: 0, y: 0, z: 0}
+  newCamPos: {x: 21.69, y: 4.96, z: 32.04}
+  newCamRot: {x: 0, y: -51.7, z: 0}
 --- !u!64 &266580319
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266580317}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 4.79, y: 5.07, z: 2.06}
+  m_LocalPosition: {x: 9.7, y: 5.1, z: 35.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb1c0001d3166c44b207bf0cb2909c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newCamPos: {x: 0, y: 0, z: 0}
+  newCamPos: {x: 81, y: 13.7, z: 246.25}
   newCamRot: {x: 0, y: 0, z: 0}
 --- !u!64 &355757202
 MeshCollider:
@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355757200}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 50.8, y: -0.1, z: 50.8}
+  m_LocalPosition: {x: 30.42, y: 7.3, z: 54.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1057,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 1, z: -15}
+  m_LocalPosition: {x: 4.73, y: 2.75, z: 14.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1075,3 +1075,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594524f738a7dfb4a85490ae6380a703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  targetRot: {x: 0, y: 0, z: 0, w: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
+  lerpSpeed: 0.5
+  percentage: 0

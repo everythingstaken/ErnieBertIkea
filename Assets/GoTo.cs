@@ -1,9 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GoTo : MonoBehaviour
 {
+
+    public Vector3 targetPos;
+    public Vector3 startPos;
+    public Quaternion targetRot;
+    public Quaternion startRot;
+
+
+    public float lerpSpeed=1f;
+    public float percentage;
+
+
+    private void Awake()
+    {
+        targetPos = transform.position;
+        targetRot = transform.rotation;
+        percentage = 1f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +51,33 @@ public class GoTo : MonoBehaviour
             //Debug.Log("Did not Hit");
         }
 
+        if (percentage < 1f)
+        {
+            percentage += lerpSpeed * Time.deltaTime;
+        } 
+
+        transform.position = Vector3.Lerp(startPos, targetPos, percentage);
+        transform.rotation = Quaternion.Slerp(startRot, targetRot, percentage);
+
+        if ()
+        {
+            //SceneManager.LoadScene("Game");
+        }
+
+    }
+
+    public void MoveCamera(Vector3 _targetPos, Quaternion _targetRot)
+    {
+
+        if (_targetPos == transform.position)
+        {
+            return;
+        }
+
+        startPos = transform.position;
+        startRot = transform.rotation;
+        percentage = 0f;
+        targetPos = _targetPos;
+        targetRot = _targetRot;
     }
 }

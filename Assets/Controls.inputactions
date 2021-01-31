@@ -1,0 +1,33 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Reset",
+            "id": "2d4eb35d-9031-4da3-98c4-9564c3f0ca5e",
+            "actions": [
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "a5de5b48-3c34-4cad-b3b0-c651fb795204",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6a7a82c1-404c-4f7a-b62b-5a89b26df9af",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
