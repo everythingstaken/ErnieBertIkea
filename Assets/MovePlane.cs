@@ -48,18 +48,6 @@ public class MovePlane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
-
-        //Vector3 interpolatedPosition = Vector3.Lerp(Vector3.up, Vector3.forward, interpolationRatio);
-
-        //elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
-
-        //Debug.DrawLine(Vector3.zero, Vector3.up, Color.green);
-        //Debug.DrawLine(Vector3.zero, Vector3.forward, Color.blue);
-        //Debug.DrawLine(Vector3.zero, interpolatedPosition, Color.yellow);
-
-
-
         float distCovered = (Time.time - startTime) * speed;
 
         fractionOfJourney = distCovered / journeyLength;
@@ -87,26 +75,6 @@ public class MovePlane : MonoBehaviour
             targetNew = PosB;
         }
 
-
-        //if (transform.position == endMarker.position)
-        //{
-        //    back = true;
-        //    startTime = Time.time;
-        //}
-        //else if (transform.position == startMarker.position)
-        //{
-        //    back = false;
-        //    startTime = Time.time;
-        //}
-
-        //if (back == true)
-        //{
-        //    transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fractionOfJourney);
-        //}
-        //else if (back == false)
-        //{
-        //    transform.position = Vector3.Lerp(endMarker.position, startMarker.position, fractionOfJourney);
-        //}
 
 
     }

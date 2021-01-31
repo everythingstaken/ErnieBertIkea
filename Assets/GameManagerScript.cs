@@ -13,19 +13,38 @@ public class GameManagerScript : MonoBehaviour
 
     public Vector3 newPos;
     private ClickScript click_script;
+    private GoTo goToScript;
+    //public VideoPlayer movieTexture;
+
+    //private GoTo goToScript;
+
+    //[SerializeField] private @Controls _controls;
+
+    //ClickScript clickScript = GameObject.Find("name of your object").GetComponent<ClickScript>();
+
 
     private void Awake()
     {
+
+
         controls = new CursorControls();
         ChangeCursor(cursor);
         Cursor.lockState = CursorLockMode.Confined;
         mainCamera = Camera.main;
-        
+        goToScript = mainCamera.GetComponent<GoTo>();
     }
 
     private void OnEnable()
     {
         controls.Enable();
+       // _controls.Reset.Reset.performed += gameReset;
+    }
+
+    //private void gameReset; (InputAction.CallbackContext context){}
+
+    private void Reset_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        throw new System.NotImplementedException();
     }
 
     private void OnDisable()
@@ -42,8 +61,12 @@ public class GameManagerScript : MonoBehaviour
 
     private void StartedClick()
     {
-        ChangeCursor(cursorClicked);
-        DetectObject();
+        if (goToScript.percentage >= 1f)
+        {
+            ChangeCursor(cursorClicked);
+            DetectObject();
+
+        }
 
     }
 
@@ -60,8 +83,22 @@ public class GameManagerScript : MonoBehaviour
         {
             if(hit.collider != null)
             {
-
+                ClickScript cs = hit.collider.gameObject.GetComponent<ClickScript>();
                 Debug.Log("3D Hit: " + hit.collider.tag);
+                goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot), cs.speed);
+                cs.GetComponent<AudioSource>().Play();
+                if(cs.GetComponent<UnityEngine.Video.VideoPlayer>() != null)
+                {
+                    cs.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+                }
+
+                //cs.GetComponent<Renderer>().material.mainTexture = movieTexture;
+
+                //if (movieTexture.isPlaying)
+                //{
+                //    movieTexture.Pause();
+                //    AudioSource.Pause();
+                //}
             }
         }
 
@@ -73,16 +110,18 @@ public class GameManagerScript : MonoBehaviour
         //    }
         //}
 
-        RaycastHit[] hitsNonAlloc = new RaycastHit[1];
-        int numberOfHits = Physics.RaycastNonAlloc(ray, hitsNonAlloc);
-        for (int i = 0; i < numberOfHits; ++i)
-        {
-            if (hitsNonAlloc[i].collider != null)
-            {
-                newPos = hitsNonAlloc[i].transform.position;
-                Debug.Log("3D Hit Non Alloc All:" + hitsNonAlloc[i].transform.position);
-            }
-        }
+        //RaycastHit[] hitsNonAlloc = new RaycastHit[1];
+        //int numberOfHits = Physics.RaycastNonAlloc(ray, hitsNonAlloc);
+        //for (int i = 0; i < numberOfHits; ++i)
+        //{
+        //    if (hitsNonAlloc[i].collider != null)
+        //    {
+        //        ClickScript cs = hitsNonAlloc[i].collider.gameObject.GetComponent<ClickScript>();
+        //        //mainCamera.transform.position = cs.newCamPos;
+        //        Debug.Log("3D Hit Non Alloc All:" + hitsNonAlloc[i].transform.position);
+        //        goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot),cs.speed);
+        //    }
+        //}
 
         //RaycastHit2D hits2D = Physics2D.GetRayIntersection(ray);
         //if (hits2D.collider != null)
