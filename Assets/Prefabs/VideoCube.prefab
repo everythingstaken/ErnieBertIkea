@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7086223479067382248}
   - component: {fileID: 7086223479067382255}
   - component: {fileID: 7086223479067382254}
-  - component: {fileID: 7086223479067382253}
   m_Layer: 0
   m_Name: VideoCube
   m_TagString: Untagged
@@ -229,18 +228,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7086223479067382253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7086223479067382252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb1c0001d3166c44b207bf0cb2909c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newCamPos: {x: -21.16, y: 0, z: 13.9}
-  newCamRot: {x: 0, y: 90, z: 0}
-  speed: 0.15
