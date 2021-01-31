@@ -14,15 +14,19 @@ public class GameManagerScript : MonoBehaviour
     public Vector3 newPos;
     private ClickScript click_script;
     private GoTo goToScript;
+    //public VideoPlayer movieTexture;
+
     //private GoTo goToScript;
 
-    [SerializeField] private @Controls _controls;
+    //[SerializeField] private @Controls _controls;
 
     //ClickScript clickScript = GameObject.Find("name of your object").GetComponent<ClickScript>();
 
 
     private void Awake()
     {
+
+
         controls = new CursorControls();
         ChangeCursor(cursor);
         Cursor.lockState = CursorLockMode.Confined;
@@ -61,6 +65,7 @@ public class GameManagerScript : MonoBehaviour
         {
             ChangeCursor(cursorClicked);
             DetectObject();
+
         }
 
     }
@@ -78,8 +83,22 @@ public class GameManagerScript : MonoBehaviour
         {
             if(hit.collider != null)
             {
-
+                ClickScript cs = hit.collider.gameObject.GetComponent<ClickScript>();
                 Debug.Log("3D Hit: " + hit.collider.tag);
+                goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot), cs.speed);
+                cs.GetComponent<AudioSource>().Play();
+                if(cs.GetComponent<UnityEngine.Video.VideoPlayer>() != null)
+                {
+                    cs.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
+                }
+
+                //cs.GetComponent<Renderer>().material.mainTexture = movieTexture;
+
+                //if (movieTexture.isPlaying)
+                //{
+                //    movieTexture.Pause();
+                //    AudioSource.Pause();
+                //}
             }
         }
 
@@ -91,18 +110,18 @@ public class GameManagerScript : MonoBehaviour
         //    }
         //}
 
-        RaycastHit[] hitsNonAlloc = new RaycastHit[1];
-        int numberOfHits = Physics.RaycastNonAlloc(ray, hitsNonAlloc);
-        for (int i = 0; i < numberOfHits; ++i)
-        {
-            if (hitsNonAlloc[i].collider != null)
-            {
-                ClickScript cs = hitsNonAlloc[i].collider.gameObject.GetComponent<ClickScript>();
-                //mainCamera.transform.position = cs.newCamPos;
-                Debug.Log("3D Hit Non Alloc All:" + hitsNonAlloc[i].transform.position);
-                goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot));
-            }
-        }
+        //RaycastHit[] hitsNonAlloc = new RaycastHit[1];
+        //int numberOfHits = Physics.RaycastNonAlloc(ray, hitsNonAlloc);
+        //for (int i = 0; i < numberOfHits; ++i)
+        //{
+        //    if (hitsNonAlloc[i].collider != null)
+        //    {
+        //        ClickScript cs = hitsNonAlloc[i].collider.gameObject.GetComponent<ClickScript>();
+        //        //mainCamera.transform.position = cs.newCamPos;
+        //        Debug.Log("3D Hit Non Alloc All:" + hitsNonAlloc[i].transform.position);
+        //        goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot),cs.speed);
+        //    }
+        //}
 
         //RaycastHit2D hits2D = Physics2D.GetRayIntersection(ray);
         //if (hits2D.collider != null)

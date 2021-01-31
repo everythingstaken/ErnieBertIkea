@@ -18,6 +18,7 @@ public class GoTo : MonoBehaviour
 
     private void Awake()
     {
+        transform.position = new Vector3(0, 0, 0);
         targetPos = transform.position;
         targetRot = transform.rotation;
         percentage = 1f;
@@ -66,7 +67,7 @@ public class GoTo : MonoBehaviour
 
     }
 
-    public void MoveCamera(Vector3 _targetPos, Quaternion _targetRot)
+    public void MoveCamera(Vector3 _targetPos, Quaternion _targetRot, float _speed)
     {
 
         if (_targetPos == transform.position)
@@ -79,5 +80,6 @@ public class GoTo : MonoBehaviour
         percentage = 0f;
         targetPos = _targetPos;
         targetRot = _targetRot;
+        lerpSpeed = _speed;
     }
 }
