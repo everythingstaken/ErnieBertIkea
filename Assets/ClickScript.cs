@@ -6,6 +6,7 @@ public class ClickScript : MonoBehaviour
 {
     public Vector3 newCamPos;
     public Vector3 newCamRot;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
