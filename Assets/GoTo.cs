@@ -59,7 +59,7 @@ public class GoTo : MonoBehaviour
         transform.position = Vector3.Lerp(startPos, targetPos, percentage);
         transform.rotation = Quaternion.Slerp(startRot, targetRot, percentage);
 
-        if ()
+       // if ()
         {
             //SceneManager.LoadScene("Game");
         }

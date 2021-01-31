@@ -16,7 +16,7 @@ public class GameManagerScript : MonoBehaviour
     private GoTo goToScript;
     //private GoTo goToScript;
 
-    [SerializeField] private Controls _controls;
+    [SerializeField] private @Controls _controls;
 
     //ClickScript clickScript = GameObject.Find("name of your object").GetComponent<ClickScript>();
 
@@ -33,6 +33,14 @@ public class GameManagerScript : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+       // _controls.Reset.Reset.performed += gameReset;
+    }
+
+    //private void gameReset; (InputAction.CallbackContext context){}
+
+    private void Reset_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        throw new System.NotImplementedException();
     }
 
     private void OnDisable()
