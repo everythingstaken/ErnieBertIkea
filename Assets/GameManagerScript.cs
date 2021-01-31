@@ -83,6 +83,7 @@ public class GameManagerScript : MonoBehaviour
         {
             if(hit.collider != null)
             {
+                //if(render)
                 ClickScript cs = hit.collider.gameObject.GetComponent<ClickScript>();
                 Debug.Log("3D Hit: " + hit.collider.tag);
                 goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot), cs.speed);
