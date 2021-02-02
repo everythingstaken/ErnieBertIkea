@@ -14,6 +14,7 @@ public class GoTo : MonoBehaviour
 
     public float lerpSpeed=1f;
     public float percentage;
+    public bool theEnd;
 
 
     private void Awake()
@@ -65,6 +66,7 @@ public class GoTo : MonoBehaviour
             //SceneManager.LoadScene("Game");
         }
 
+
     }
 
     public void MoveCamera(Vector3 _targetPos, Quaternion _targetRot, float _speed)
@@ -81,5 +83,6 @@ public class GoTo : MonoBehaviour
         targetPos = _targetPos;
         targetRot = _targetRot;
         lerpSpeed = _speed;
+
     }
 }

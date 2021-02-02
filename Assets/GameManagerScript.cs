@@ -81,18 +81,27 @@ public class GameManagerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if(hit.collider != null)
+            if (hit.collider != null)
             {
                 //if(render)
                 ClickScript cs = hit.collider.gameObject.GetComponent<ClickScript>();
                 Debug.Log("3D Hit: " + hit.collider.tag);
+
+                if (cs == null)
+                {
+                    Debug.Log("shut up");
+                } else {
+
                 goToScript.MoveCamera(cs.newCamPos, Quaternion.Euler(cs.newCamRot), cs.speed);
                 cs.GetComponent<AudioSource>().Play();
-                if(cs.GetComponent<UnityEngine.Video.VideoPlayer>() != null)
+                if (cs.GetComponent<UnityEngine.Video.VideoPlayer>() != null)
                 {
                     //videoPlayer.url = System.IO.Path.Combine (Application.streamingAssetsPath, "myfile.mp4")
                     cs.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
                 }
+
+
+            }
 
                 //cs.GetComponent<Renderer>().material.mainTexture = movieTexture;
 
